@@ -8,7 +8,7 @@ function funcao1()
     } catch (RuntimeException | DivisionByZeroError $exception){
         echo(
             PHP_EOL . 
-            "Erro: " . $exception->getMessage() . " na linha " . $exception->getLine() . PHP_EOL .
+            "Erro " . $exception->getCode() . ": " . $exception->getMessage() . " na linha " . $exception->getLine() . PHP_EOL .
             $exception->getTraceAsString() . PHP_EOL .
             PHP_EOL
         );
@@ -20,15 +20,9 @@ function funcao2()
 {
     echo 'Entrei na função 2' . PHP_EOL;
 
-    $divisao = intdiv(0, 0);
-
-    $arrayFixo = new SplFixedArray(2);
-    $arrayFixo[3] = 'valor';
-
-
-    for ($i = 1; $i <= 5; $i++) {
-        echo $i . PHP_EOL;
-    }
+    $exception = new RuntimeException("Erro genérico", 500);
+    throw $exception;
+    
     echo 'Saindo da função 2' . PHP_EOL;
 }
 

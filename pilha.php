@@ -3,6 +3,12 @@
 function funcao1()
 {
     echo 'Entrei na função 1' . PHP_EOL;
+    try {
+        $arrayFixo = new SplFixedArray(2);
+        $arrayFixo[3] = 'valor';
+    } catch (RuntimeException $exception) {
+        echo "Houve um erro na função 1 " . PHP_EOL;
+    }
     funcao2();
     echo 'Saindo da função 1' . PHP_EOL;
 }
